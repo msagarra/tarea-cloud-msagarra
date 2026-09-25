@@ -1,0 +1,22 @@
+# Entorno virtual de Python
+.venv/
+
+# Archivos temporales de Python
+__pycache__/
+*.py[cod]
+
+# Archivos de macOS
+.DS_Store
+
+# Variables de entorno y secretos
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+
+# Datos locales
+data/*.csv
+data/*.zip
