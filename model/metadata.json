@@ -1,0 +1,75 @@
+{
+  "model_version": "1.0.0",
+  "estimator": "LogisticRegression",
+  "python_version": "3.12.13",
+  "sklearn_version": "1.5.2",
+  "target": "y",
+  "positive_class": "yes",
+  "features": [
+    "age",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "balance",
+    "housing",
+    "loan",
+    "contact",
+    "day",
+    "month",
+    "campaign",
+    "pdays",
+    "previous",
+    "poutcome"
+  ],
+  "numeric_features": [
+    "age",
+    "balance",
+    "day",
+    "campaign",
+    "pdays",
+    "previous"
+  ],
+  "categorical_features": [
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "poutcome"
+  ],
+  "excluded_features": [
+    "duration"
+  ],
+  "random_state": 42,
+  "test_size": 0.2,
+  "train_rows": 36168,
+  "test_rows": 9043,
+  "metrics": {
+    "accuracy": 0.7548,
+    "precision": 0.2662,
+    "recall": 0.6238,
+    "f1": 0.3732,
+    "roc_auc": 0.7722,
+    "average_precision": 0.4093
+  },
+  "confusion_matrix": {
+    "labels": [
+      "no",
+      "yes"
+    ],
+    "values": [
+      [
+        6166,
+        1819
+      ],
+      [
+        398,
+        660
+      ]
+    ]
+  }
+}
