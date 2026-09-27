@@ -23,7 +23,9 @@ FastAPI
    ↓
 API HTTP
 
-1. Problema de Machine Learning
+```
+
+## 1. Problema de Machine Learning
 
 Se utiliza el dataset Bank Marketing del UCI Machine Learning
 Repository.
@@ -50,7 +52,7 @@ yes	11,70 %
 
 Por lo tanto, existe un desbalance importante entre las clases.
 
-2. Variables utilizadas
+## 2. Variables utilizadas
 
 El modelo final utiliza 15 variables predictoras.
 
@@ -82,7 +84,7 @@ información que no se considera disponible en el momento definido para realizar
 Las categorías unknown presentes en el dataset se conservan como
 categorías explícitas y no son tratadas como valores nulos.
 
-3. Exploración de datos
+## 3. Exploración de datos
 
 Durante la exploración se verificó:
 
@@ -100,7 +102,7 @@ La clase positiva yes representa aproximadamente el 11,70 % de las
 observaciones, por lo que las métricas de evaluación deben interpretarse
 considerando el desbalance de clases.
 
-4. Pipeline de Machine Learning
+## 4. Pipeline de Machine Learning
 
 El modelo se implementa utilizando un Pipeline de scikit-learn que
 integra tanto el preprocesamiento como el estimador.
@@ -145,7 +147,7 @@ class_weight="balanced"
 permite dar mayor peso relativo a la clase minoritaria durante el
 entrenamiento.
 
-5. Separación entrenamiento / test
+## 5. Separación entrenamiento / test
 
 La división de datos corresponde a:
 
@@ -165,7 +167,7 @@ Resultados de la separación:
 Train: 36.168 observaciones
 Test:   9.043 observaciones
 
-6. Evaluación del modelo
+## 6. Evaluación del modelo
 
 Resultados obtenidos sobre el conjunto de test:
 
@@ -200,7 +202,7 @@ positiva.
 El uso de class_weight="balanced" favorece la detección de la clase
 minoritaria, aunque aumenta el número de falsos positivos.
 
-7. Serialización
+## 7. Serialización
 
 El pipeline completo se serializa utilizando:
 
@@ -236,7 +238,7 @@ métricas
 tamaño de train y test
 matriz de confusión.
 
-8. Verificación del modelo serializado
+## 8. Verificación del modelo serializado
 
 El archivo:
 
@@ -257,7 +259,8 @@ Modelo cargado correctamente.
 === PREDICCIÓN ===
 Clase predicha: no
 Probabilidad de yes: 0.4635
-9. Estructura del repositorio
+
+##9. Estructura del repositorio
 tarea-cloud-fastapi/
 │
 ├── app/
@@ -290,7 +293,7 @@ tarea-cloud-fastapi/
 ├── .gitignore
 └── README.md
 
-10. Entorno de ejecución
+## 10. Entorno de ejecución
 
 El proyecto fue desarrollado y probado con:
 
@@ -315,14 +318,14 @@ pydantic==2.9.2
 pytest==8.3.3
 httpx==0.27.2
 
-11. Clonar el repositorio
+## 11. Clonar el repositorio
 git clone https://github.com/msagarra/tarea-cloud-msagarra.git
 
 Entrar a la carpeta:
 
 cd tarea-cloud-msagarra
 
-12. Crear el entorno virtual
+## 12. Crear el entorno virtual
 
 En macOS o Linux:
 
@@ -340,10 +343,10 @@ Resultado esperado:
 
 Python 3.12.13
 
-13. Instalar dependencias
+## 13. Instalar dependencias
 pip install -r requirements.txt
 
-14. Obtener el dataset
+## 14. Obtener el dataset
 
 Los datos crudos no se almacenan en GitHub.
 
@@ -356,7 +359,7 @@ entrenamiento debe encontrarse en:
 
 data/bank-full.csv
 
-15. Entrenar el modelo
+## 15. Entrenar el modelo
 
 Ejecutar:
 
@@ -366,7 +369,8 @@ El entrenamiento genera:
 
 model/model.pkl
 model/metadata.json
-16. Ejecutar la API
+
+## 16. Ejecutar la API
 
 Levantar el servicio localmente mediante:
 
@@ -376,7 +380,7 @@ El servicio queda disponible en:
 
 http://127.0.0.1:8000
 
-17. Documentación Swagger
+## 17. Documentación Swagger
 
 FastAPI genera automáticamente la documentación interactiva.
 
@@ -392,7 +396,7 @@ POST  /predict
 POST  /predict-batch
 GET   /docs
 
-18. Endpoint /health
+## 18. Endpoint /health
 
 Permite verificar el estado del servicio y confirmar que el modelo y los
 metadatos se encuentran cargados en memoria.
@@ -407,7 +411,7 @@ Respuesta esperada:
   "metadata_loaded": true
 }
 
-19. Endpoint /model-info
+## 19. Endpoint /model-info
 
 Entrega información del modelo desplegado.
 
@@ -422,7 +426,7 @@ variables de entrada
 variables excluidas
 métricas de evaluación.
 
-20. Endpoint /predict
+## 20. Endpoint /predict
 
 Permite realizar una predicción individual.
 
@@ -459,7 +463,7 @@ Ejemplo de respuesta:
 
 La respuesta incluye además una marca temporal UTC.
 
-21. Endpoint /predict-batch
+## 21. Endpoint /predict-batch
 
 Permite realizar predicciones sobre múltiples observaciones en una sola
 petición.
@@ -476,7 +480,8 @@ probability_yes = 0.4635
 Observación 2
 prediction = yes
 probability_yes = 0.8912
-22. Validación con Pydantic
+
+## 22. Validación con Pydantic
 
 Los datos de entrada se validan utilizando modelos Pydantic definidos
 en:
@@ -506,7 +511,7 @@ HTTP 422 Unprocessable Entity
 
 antes de enviar esos datos al modelo.
 
-23. Manejo de errores
+## 23. Manejo de errores
 
 Las entradas inválidas son rechazadas automáticamente mediante Pydantic
 con código:
@@ -520,7 +525,7 @@ HTTP 500
 
 sin exponer trazas internas al cliente.
 
-24. Pruebas automatizadas
+## 24. Pruebas automatizadas
 
 Las pruebas se encuentran en:
 
@@ -553,7 +558,7 @@ En una de las ejecuciones locales registradas:
 Las advertencias corresponden a DeprecationWarning provenientes de
 dependencias externas y no provocan fallos en las pruebas.
 
-25. Evidencias
+## 25. Evidencias
 
 La evidencia de funcionamiento local se encuentra almacenada en:
 
@@ -569,7 +574,7 @@ predicción individual con HTTP 200 OK;
 predicción por lote con HTTP 200 OK;
 entrada inválida con HTTP 422 Unprocessable Entity.
 
-26. Procfile
+## 26. Procfile
 
 El comando declarado para iniciar el servicio en una plataforma compatible
 es:
@@ -578,7 +583,7 @@ web: uvicorn app.main:app --host 0.0.0.0 --port $PORT
 
 El puerto se obtiene desde la variable de entorno $PORT.
 
-27. Reproducibilidad
+## 27. Reproducibilidad
 
 Para reproducir el proyecto desde cero:
 
@@ -603,20 +608,21 @@ archivos .zip;
 archivos .env;
 credenciales o secretos.
 
-28. Estado del despliegue
+## 28. Estado del despliegue
 
 El servicio se encuentra validado y probado en localhost.
 
 El despliegue público en una plataforma Cloud corresponde a una etapa
 opcional adicional del proyecto.
 
-29. Repositorio
+## 29. Repositorio
 
 Repositorio GitHub:
 
 https://github.com/msagarra/tarea-cloud-msagarra
 
-30. Autoría
+## 30. Autor
+
 Matías Sagarra Barbano
 
 Curso: Cloud Computing
