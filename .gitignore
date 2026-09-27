@@ -20,3 +20,6 @@ __pycache__/
 # Datos locales
 data/*.csv
 data/*.zip
+
+# Pytest
+.pytest_cache/
