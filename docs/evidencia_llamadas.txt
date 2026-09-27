@@ -1,0 +1,33 @@
+========================================
+1. PREDICCION INDIVIDUAL - /predict
+========================================
+HTTP/1.1 200 OK
+date: Sun, 27 Sep 2026 05:35:19 GMT
+server: uvicorn
+content-length: 151
+content-type: application/json
+
+{"prediction":"no","probability_yes":0.4635,"prediction_probability":0.5365,"model_version":"1.0.0","timestamp_utc":"2026-09-27T05:35:19.477894+00:00"}
+
+========================================
+2. PREDICCION POR LOTE - /predict-batch
+========================================
+HTTP/1.1 200 OK
+date: Sun, 27 Sep 2026 05:35:51 GMT
+server: uvicorn
+content-length: 306
+content-type: application/json
+
+[{"prediction":"no","probability_yes":0.4635,"prediction_probability":0.5365,"model_version":"1.0.0","timestamp_utc":"2026-09-27T05:35:51.694452+00:00"},{"prediction":"yes","probability_yes":0.8912,"prediction_probability":0.8912,"model_version":"1.0.0","timestamp_utc":"2026-09-27T05:35:51.696219+00:00"}]
+
+========================================
+3. ENTRADA INVALIDA - HTTP 422
+========================================
+HTTP/1.1 422 Unprocessable Entity
+date: Sun, 27 Sep 2026 05:36:13 GMT
+server: uvicorn
+content-length: 1927
+content-type: application/json
+
+{"detail":[{"type":"less_than_equal","loc":["body","age"],"msg":"Input should be less than or equal to 100","input":150,"ctx":{"le":100}},{"type":"literal_error","loc":["body","job"],"msg":"Input should be 'admin.', 'blue-collar', 'entrepreneur', 'housemaid', 'management', 'retired', 'self-employed', 'services', 'student', 'technician', 'unemployed' or 'unknown'","input":"astronaut","ctx":{"expected":"'admin.', 'blue-collar', 'entrepreneur', 'housemaid', 'management', 'retired', 'self-employed', 'services', 'student', 'technician', 'unemployed' or 'unknown'"}},{"type":"missing","loc":["body","marital"],"msg":"Field required","input":{"age":150,"job":"astronaut"}},{"type":"missing","loc":["body","education"],"msg":"Field required","input":{"age":150,"job":"astronaut"}},{"type":"missing","loc":["body","default"],"msg":"Field required","input":{"age":150,"job":"astronaut"}},{"type":"missing","loc":["body","balance"],"msg":"Field required","input":{"age":150,"job":"astronaut"}},{"type":"missing","loc":["body","housing"],"msg":"Field required","input":{"age":150,"job":"astronaut"}},{"type":"missing","loc":["body","loan"],"msg":"Field required","input":{"age":150,"job":"astronaut"}},{"type":"missing","loc":["body","contact"],"msg":"Field required","input":{"age":150,"job":"astronaut"}},{"type":"missing","loc":["body","day"],"msg":"Field required","input":{"age":150,"job":"astronaut"}},{"type":"missing","loc":["body","month"],"msg":"Field required","input":{"age":150,"job":"astronaut"}},{"type":"missing","loc":["body","campaign"],"msg":"Field required","input":{"age":150,"job":"astronaut"}},{"type":"missing","loc":["body","pdays"],"msg":"Field required","input":{"age":150,"job":"astronaut"}},{"type":"missing","loc":["body","previous"],"msg":"Field required","input":{"age":150,"job":"astronaut"}},{"type":"missing","loc":["body","poutcome"],"msg":"Field required","input":{"age":150,"job":"astronaut"}}]}
+
